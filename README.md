@@ -6,7 +6,6 @@
 ![Python](https://img.shields.io/badge/Python-3.x-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![Bootstrap](https://img.shields.io/badge/Bootstrap-5-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white)
 ![SQLite](https://img.shields.io/badge/SQLite-003B57?style=for-the-badge&logo=sqlite&logoColor=white)
-![License](https://img.shields.io/badge/Licença-MIT-green?style=for-the-badge)
 
 **Aplicação web para cadastro e gerenciamento de autores literários, desenvolvida com Django 6 e Bootstrap 5.**
 
