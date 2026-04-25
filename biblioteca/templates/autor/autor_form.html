@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+
+{% block title %}Cadastro de Autores{% endblock %}
+
+{% block content %}
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="card-title mb-0">Cadastro de Autores</h3>
+                </div>
+                <div class="card-body">
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {% bootstrap_form form %}
+                        <div class="text-center mt-3">
+                            <button type="submit" class="btn btn-primary px-4">Salvar</button>
+                            <a href="{% url 'autor_menu' %}" class="btn btn-secondary px-4">Cancelar</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
