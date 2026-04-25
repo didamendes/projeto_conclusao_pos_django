@@ -9,8 +9,6 @@
 
 **Aplicação web para cadastro e gerenciamento de autores literários, desenvolvida com Django 6 e Bootstrap 5.**
 
-Projeto de conclusão de pós-graduação — focado em boas práticas de desenvolvimento web com Python.
-
 ---
 
 [Funcionalidades](#-funcionalidades) •
