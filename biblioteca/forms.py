@@ -1,10 +1,11 @@
 from django import forms
 from django.contrib.auth.models import Group
+from django.contrib.auth.password_validation import validate_password
 
 from biblioteca.models import Autor, Usuario
 
 
-class autor_form(forms.ModelForm):
+class AutorForm(forms.ModelForm):
     class Meta:
         model = Autor
         fields = ['nome', 'nacionalidade', 'dataNascimento']
@@ -42,6 +43,8 @@ class CadastroForm(forms.ModelForm):
         p2 = self.cleaned_data.get('password2')
         if p1 and p2 and p1 != p2:
             raise forms.ValidationError('As senhas não são iguais')
+        if p2:
+            validate_password(p2)
         return p2
 
     def save(self, commit=True):
@@ -53,4 +56,3 @@ class CadastroForm(forms.ModelForm):
             grupo = self.cleaned_data['grupo']
             usuario.groups.add(grupo)
         return usuario
-

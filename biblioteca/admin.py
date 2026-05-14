@@ -20,8 +20,31 @@ class AutorAdmin(admin.ModelAdmin):
             )
         return "N/A"
 
-admin.site.register(Usuario)
-admin.site.register(Categoria)
-admin.site.register(Livro)
-admin.site.register(Emprestimo)
-admin.site.register(Avaliacao)
+@admin.register(Usuario)
+class UsuarioAdmin(admin.ModelAdmin):
+    list_display = ('username', 'first_name', 'last_name', 'email', 'telefone', 'is_active')
+    search_fields = ('username', 'first_name', 'last_name', 'email')
+    list_filter = ('is_active', 'groups')
+
+@admin.register(Categoria)
+class CategoriaAdmin(admin.ModelAdmin):
+    list_display = ('nome', 'descricao')
+    search_fields = ('nome',)
+
+@admin.register(Livro)
+class LivroAdmin(admin.ModelAdmin):
+    list_display = ('titulo', 'autor', 'genero', 'ano_publicacao', 'quantidade_total', 'quantidade_disponivel')
+    search_fields = ('titulo', 'autor')
+    list_filter = ('genero', 'ano_publicacao')
+
+@admin.register(Emprestimo)
+class EmprestimoAdmin(admin.ModelAdmin):
+    list_display = ('usuario', 'livro', 'data_emprestimo', 'data_prevista_devolucao', 'status')
+    search_fields = ('usuario__username', 'livro__titulo')
+    list_filter = ('status', 'data_emprestimo')
+
+@admin.register(Avaliacao)
+class AvaliacaoAdmin(admin.ModelAdmin):
+    list_display = ('usuario', 'livro', 'nota', 'criado_em')
+    search_fields = ('usuario__username', 'livro__titulo')
+    list_filter = ('nota', 'criado_em')
