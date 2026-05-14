@@ -7,5 +7,7 @@ urlpatterns = [
 
     path('autor_update/<int:pk>', views.autor_update.as_view(), name='autor_update'),
 
-    path('autor_delete/<int:pk>', views.autor_delete.as_view(), name='autor_delete')
+    path('autor_delete/<int:pk>', views.autor_delete.as_view(), name='autor_delete'),
+
+    path('cadastro', views.cadastro_usuario.as_view(), name='cadastro')
 ]

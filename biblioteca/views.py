@@ -2,8 +2,8 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView, UpdateView, DeleteView
 from django_tables2 import SingleTableView
 
-from .forms import autor_form
-from .models import Autor
+from .forms import autor_form, CadastroForm
+from .models import Autor, Usuario
 from .tables import autor_table
 
 
@@ -33,3 +33,20 @@ class autor_update(UpdateView):
 class autor_delete(DeleteView):
     model = Autor
     success_url = reverse_lazy('autor_menu')
+
+
+class cadastro_usuario(CreateView):
+    model = Usuario
+    form_class = CadastroForm
+    template_name = 'usuarios/cadastro.html'
+    success_url = reverse_lazy('login')
+
+    def form_valid(self, form):
+        usuario = form.save(commit=False)
+        usuario.set_password(form.cleaned_data['password1'])
+        usuario.save()
+
+        grupo = form.cleaned_data['grupo']
+        usuario.groups.add(grupo)
+
+        return super().form_valid(form)

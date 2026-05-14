@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Autor
+from .models import Autor, Usuario, Categoria, Livro, Emprestimo, Avaliacao
 from datetime import date
 
 
@@ -20,3 +20,8 @@ class AutorAdmin(admin.ModelAdmin):
             )
         return "N/A"
 
+admin.site.register(Usuario)
+admin.site.register(Categoria)
+admin.site.register(Livro)
+admin.site.register(Emprestimo)
+admin.site.register(Avaliacao)
